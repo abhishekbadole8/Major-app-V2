@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.mainContainer {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.rightContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    width: 75vw;
+    height: 10vh;
+    background-color: #E8E8E8;
+    display: flex;
+    align-items: center;
+    padding-left: 1vw;
+}
+
+.navbar h4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5vw;
+    height: 3.5vw;
+    border-radius: 50%;
+    color: #FFFFFF;
+    background-color: #0047FF;
+}
+
+.navbar p {margin-left: 1vw;}
+
+.recentMsgContainer {
+    width: 100%;
+    height: 60vh;
+    background-color: #F7ECDC;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 4vh;
+    padding: 3vh 0;
+}
+
+.recentMsg {
+    font-family: 'Roboto', sans-serif;
+    line-height: 160.19%;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.msgDTContainer {
+    font-weight: 500;
+}
+
+.msgTContainer {
+    font-weight: 400;
+    width: 52vw;
+}
+
+/* Input Box */
+
+.inputBoxContainer {
+    width: 100%;
+    height: 25vh;
+    background-color: #E8E8E8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputBoxContainer input {
+    border: 1px solid #CCCCCC;
+    border-radius: 9px;
+    width: 92%;
+    height: 80%;
+}
+.inputBoxContainer img{
+    
+}
