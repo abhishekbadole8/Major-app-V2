@@ -41,6 +41,9 @@
 .notesProfileContainer {
     display: flex;
     flex-direction: column;
+    height:78%;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .notesProfile {
