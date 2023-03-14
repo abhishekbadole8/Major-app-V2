@@ -1,42 +1,37 @@
-import React, { useState } from "react";
+import React from "react";
 import Styles from "../Sidebar/Sidebar.module.css"
 
-function Sidebar({ setbtnClick, groupName, setLocalStorageData }) {
-
-    const [userButtonClick, setUserButtonClick] = useState(false)
-
-    const handelProfileClick = () => {
-        // setLocalStorageData(JSON.parse(localStorage.getItem("userData")))
-
-    }
+function Sidebar({ setcreateButtonClick, notes, activeNotes, setActiveNote }) {
 
     return (
         <div className={Styles.sidebarContainer}>
 
             <h3>Pocket Notes</h3>
 
+            {/* Create Button */}
             <div className={Styles.btn}>
-                <label onClick={() => { setbtnClick(true) }}>+ Create Notes</label>
+                <label onClick={() => setcreateButtonClick(true)}>+ Create Notes</label>
             </div>
 
-            <div className={Styles.notesProfileContainer}>
+            <div className={Styles.notesProfileContainer} >
 
-                <div className={Styles.notesProfile}>
-                    <h5>CU</h5>
-                    <p>Cuvette Notes</p>
+                <div className={Styles.notesProfile} >
+                    <h5>SM</h5>
+                    <p>Sample Note</p>
                 </div>
 
-                {groupName.map((group, index) => {
-
+                {notes.map((note) => {
                     return (
-                        <div className={Styles.notesProfile} key={index} onClick={() => handelProfileClick()}>
-                            <h5 style={{ backgroundColor: group.color }}>{group.name.substr(0, 2)}</h5>
-                            <p>{group.name}</p>
-                        </div>)
 
-                })}
+                        <div className={Styles.notesProfile} onClick={() => setActiveNote(note.id)}>
+                            <h5 style={{ backgroundColor: note.color }}>{note.title.substr(0, 2)}</h5>
+                            <p>{note.title}</p>
+                        </div>
 
+                    )
+                })
 
+                }
             </div>
         </div>
     )
