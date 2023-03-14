@@ -15,32 +15,27 @@ function App() {
 
   const [notes, setNotes] = useState(localStorage.notes ? JSON.parse(localStorage.notes) : [])
 
-  const [activeNote, setActiveNote] = useState(false)
+  const [activeNote, setActiveNote] = useState(false) // Active Note
 
-  // const [groupName, setGroupName] = useState([])
+  const [createButtonClick, setcreateButtonClick] = useState(false); // Create Button
+
   const [color, setColor] = useState()
   const [title, setTitle] = useState()
 
-
   const addNote = () => {
-
     const uniqueID = Math.floor(Math.random() * 9000) + 1000  // Generate Unique Id
 
     setNotes((pre) => {
-      return [...pre, { id: uniqueID, title: title, color: color }]
+      return [...pre, { id: uniqueID, title: title, color: color }] // Popup container values
     })
-
     setActiveNote(uniqueID)
     setcreateButtonClick(false)
   }
 
+  // Get Active Note
   const getActiveNote = () => {
     return notes.find((note) => note.id === activeNote)
   }
-
-  const [createButtonClick, setcreateButtonClick] = useState(false);
-
-
 
   useEffect(() => {
     localStorage.setItem("notes", JSON.stringify(notes))

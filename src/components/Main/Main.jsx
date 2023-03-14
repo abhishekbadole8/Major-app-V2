@@ -1,18 +1,28 @@
-// import { useState } from "react";
+import { useEffect, useState } from "react";
 import Styles from "../Main/Main.module.css"
-// import Sidebar from "../Sidebar/Sidebar";
 
 function Main({ activeNote }) {
 
+    const [saveMessages, setSaveMessages] = useState(localStorage.messages ? JSON.parse(localStorage.messages) : [])
+
+    const [message, setMessage] = useState()
 
     const date = new Date();
     const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const currentTime = date.getHours() + ":" + date.getMinutes() + " " + ((date.getHours < 12) ? "AM" : "PM");
     const currentDate = date.getDate() + " " + month[date.getMonth()] + " " + date.getFullYear()
 
-    const onInputField = () => { }
-    const handelMessage = () => { }
-    
+    const messageButton = () => {
+        let id = activeNote.id
+        setSaveMessages((pre) => {
+            return [...pre, { id: id, currentTime: currentTime, currentDate: currentDate, message: message }] // Main div message content
+        })
+    }
+
+    useEffect(() => {
+        localStorage.setItem("saveMessages", JSON.stringify(saveMessages))
+    }, [saveMessages])
+
     return (
         <div className={Styles.mainContainer}>
 
@@ -32,24 +42,70 @@ function Main({ activeNote }) {
 
                         <div className={Styles.recentMsg} >
 
-                            <div className={Styles.msgDTContainer}>
-                                <p></p>
-                                <p></p>
-                            </div>
 
-                            <div className={Styles.msgTContainer}>
-                                <p></p>
-                            </div>
+                            {
+                                activeNote !== undefined ?
+
+                                    <>
+                                        {/* Time & Date */}
+                                        < div className={Styles.msgDTContainer}>
+                                            <p></p>
+                                            <p></p>
+                                        </div>
+
+
+                                        {/* Message */}
+                                        <div className={Styles.msgTContainer}>
+                                            <p></p>
+                                        </div>
+                                    </>
+
+                                    :     // Nothing active note, (Undefined)
+                                    <>
+                                        {/* Time & Date */}
+                                        < div className={Styles.msgDTContainer}>
+                                            <p></p>
+                                            <p></p>
+                                        </div>
+
+
+                                        {/* Message */}
+                                        <div className={Styles.msgTContainer}>
+                                            <p></p>
+                                        </div>
+                                    </>
+                            }
+
+
+
+
 
                         </div>
                     </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     {/* Input Box */}
                     <div className={Styles.inputBoxContainer}>
                         <textarea type="text"
-                            onChange={(e) => onInputField(e.target.value)}
+                            onChange={(e) => setMessage(e.target.value)}
                             placeholder="Enter your text here....." name="message" />
-                        <img src="/images/submit-Img.png" alt="submit-button" id={Styles.submitBtn} onClick={handelMessage} />
+                        <img src="/images/submit-Img.png" alt="submit-button" id={Styles.submitBtn} onClick={messageButton} />
                     </div>
 
                 </div>
@@ -106,7 +162,8 @@ function Main({ activeNote }) {
                         <img src="/images/submit-Img.png" alt="submit-button" id={Styles.submitBtn} />
                     </div>
 
-                </div>}
+                </div>
+            }
         </div >
     )
 }
