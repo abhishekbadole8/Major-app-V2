@@ -15,6 +15,7 @@ function Sidebar({ setcreateButtonClick, notes, activeNotes, setActiveNote }) {
 
             <div className={Styles.notesProfileContainer} >
 
+                {/* User Note Profile Title Here */}
                 <div className={Styles.notesProfile} >
                     <h5>SM</h5>
                     <p>Sample Note</p>
@@ -22,16 +23,12 @@ function Sidebar({ setcreateButtonClick, notes, activeNotes, setActiveNote }) {
 
                 {notes.map((note) => {
                     return (
-
                         <div className={Styles.notesProfile} onClick={() => setActiveNote(note.id)}>
                             <h5 style={{ backgroundColor: note.color }}>{note.title.substr(0, 2)}</h5>
                             <p>{note.title}</p>
                         </div>
-
                     )
-                })
-
-                }
+                })}
             </div>
         </div>
     )

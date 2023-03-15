@@ -97,8 +97,5 @@
 }
 
 #submitBtn:hover {
-    color: #000000;
+    filter: brightness(0);
 }
-
-
-

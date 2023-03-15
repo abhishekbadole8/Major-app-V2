@@ -3,7 +3,7 @@ import Styles from "../Main/Main.module.css"
 
 function Main({ activeNote }) {
 
-    const [saveMessages, setSaveMessages] = useState(localStorage.messages ? JSON.parse(localStorage.messages) : [])
+    const [saveMessages, setSaveMessages] = useState(localStorage.getItem("messages") ? JSON.parse(localStorage.getItem("messages")) : [])
 
     const [message, setMessage] = useState()
 
@@ -20,7 +20,7 @@ function Main({ activeNote }) {
     }
 
     useEffect(() => {
-        localStorage.setItem("saveMessages", JSON.stringify(saveMessages))
+        localStorage.setItem("messages", JSON.stringify(saveMessages))
     }, [saveMessages])
 
     return (
@@ -40,64 +40,49 @@ function Main({ activeNote }) {
                     {/* Mid Field */}
                     <div className={Styles.recentMsgContainer}>
 
-                        <div className={Styles.recentMsg} >
+                        {activeNote !== undefined ?
+                            saveMessages.map((msg) => {
 
+                                const activeNotes = activeNote.id;
+                                // console.log("i am",activeNote.id)
 
-                            {
-                                activeNote !== undefined ?
+                                if (msg.id === activeNotes) {
 
-                                    <>
-                                        {/* Time & Date */}
-                                        < div className={Styles.msgDTContainer}>
-                                            <p></p>
-                                            <p></p>
+                                    return (
+                                        <div className={Styles.recentMsg} >
+                                            {/* Time & Date */}
+                                            < div className={Styles.msgDTContainer}>
+                                                <p>{msg.currentTime}</p>
+                                                <p>{msg.currentDate}</p>
+                                            </div>
+
+                                            {/* Message */}
+                                            <div className={Styles.msgTContainer}>
+                                                <p>{msg.message}</p>
+                                            </div>
                                         </div>
+                                    )
+                                }
+                            })
+
+                            :     // Nothing active note, (Undefined)
+                            <>
+                                {/* Time & Date */}
+                                < div className={Styles.msgDTContainer}>
+                                    <p></p>
+                                    <p></p>
+                                </div>
 
 
-                                        {/* Message */}
-                                        <div className={Styles.msgTContainer}>
-                                            <p></p>
-                                        </div>
-                                    </>
-
-                                    :     // Nothing active note, (Undefined)
-                                    <>
-                                        {/* Time & Date */}
-                                        < div className={Styles.msgDTContainer}>
-                                            <p></p>
-                                            <p></p>
-                                        </div>
+                                {/* Message */}
+                                <div className={Styles.msgTContainer}>
+                                    <p></p>
+                                </div>
+                            </>
+                        }
 
 
-                                        {/* Message */}
-                                        <div className={Styles.msgTContainer}>
-                                            <p></p>
-                                        </div>
-                                    </>
-                            }
-
-
-
-
-
-                        </div>
                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                     {/* Input Box */}
