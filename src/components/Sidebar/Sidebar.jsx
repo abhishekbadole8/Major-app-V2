@@ -3,6 +3,10 @@ import Styles from "../Sidebar/Sidebar.module.css"
 
 function Sidebar({ setcreateButtonClick, notes, activeNotes, setActiveNote }) {
 
+    function refreshPage() {
+        window.location.reload();
+    }
+
     return (
         <div className={Styles.sidebarContainer}>
 
@@ -15,20 +19,21 @@ function Sidebar({ setcreateButtonClick, notes, activeNotes, setActiveNote }) {
 
             <div className={Styles.notesProfileContainer} >
 
-                {/* User Note Profile Title Here */}
-                <div className={Styles.notesProfile} >
-                    <h5>SM</h5>
+                {/* User Notes  Title Here */}
+                <div className={Styles.notesProfile} onClick={() => refreshPage()}>
+                    <h5>SN</h5>
                     <p>Sample Note</p>
                 </div>
 
                 {notes.map((note) => {
                     return (
                         <div className={Styles.notesProfile} onClick={() => setActiveNote(note.id)}>
-                            <h5 style={{ backgroundColor: note.color }}>{note.title.substr(0, 2)}</h5>
+                            <h5 style={{ backgroundColor: note.color }}>{note.title.charAt(0) + note.title.charAt(note.title.indexOf(" ") + 1)}</h5>
                             <p>{note.title}</p>
                         </div>
                     )
                 })}
+
             </div>
         </div>
     )

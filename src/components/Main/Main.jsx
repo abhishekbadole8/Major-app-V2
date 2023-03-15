@@ -17,6 +17,7 @@ function Main({ activeNote }) {
         setSaveMessages((pre) => {
             return [...pre, { id: id, currentTime: currentTime, currentDate: currentDate, message: message }] // Main div message content
         })
+        
     }
 
     useEffect(() => {
@@ -32,7 +33,7 @@ function Main({ activeNote }) {
 
                     {/* Navbar */}
                     <div className={Styles.navbar}>
-                        <h4 style={{ backgroundColor: activeNote.color }}>{activeNote.title.substr(0, 2)}</h4>
+                        <h4 style={{ backgroundColor: activeNote.color }}>{activeNote.title.charAt(0) + activeNote.title.charAt(activeNote.title.indexOf(" ") + 1)}</h4>
                         <p>{activeNote.title}</p>
                     </div>
 
@@ -44,7 +45,6 @@ function Main({ activeNote }) {
                             saveMessages.map((msg) => {
 
                                 const activeNotes = activeNote.id;
-                                // console.log("i am",activeNote.id)
 
                                 if (msg.id === activeNotes) {
 
@@ -89,6 +89,12 @@ function Main({ activeNote }) {
                     <div className={Styles.inputBoxContainer}>
                         <textarea type="text"
                             onChange={(e) => setMessage(e.target.value)}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter') {
+                                    return messageButton()
+                                }
+
+                            }}
                             placeholder="Enter your text here....." name="message" />
                         <img src="/images/submit-Img.png" alt="submit-button" id={Styles.submitBtn} onClick={messageButton} />
                     </div>
@@ -101,7 +107,7 @@ function Main({ activeNote }) {
                     {/* Navbar */}
 
                     <div className={Styles.navbar}>
-                        <h4>SM</h4>
+                        <h4>SN</h4>
                         <p>Sample Note</p>
                     </div>
 
@@ -118,7 +124,7 @@ function Main({ activeNote }) {
                             </div>
 
                             <div className={Styles.msgTContainer}>
-                                <p>When first building this generator we thought about using computers to generate the paragraphs, but they weren't very good and many times didn't make any sense at all. We therefore took the time to create paragraphs specifically for this generator to make it the best that we could.</p>
+                                <p>It's just a sample note, click Create Notes button to create your own.</p>
                             </div>
 
                         </div>
@@ -131,8 +137,8 @@ function Main({ activeNote }) {
                                 <p>{currentDate}</p>
                             </div>
 
-                            <div className={Styles.msgTContainer}>
-                                <p>It's not only writers who can benefit from this free online tool. If you're a programmer who's working on a project where blocks of text are needed, this tool can be a great way to get that. It's a good way to test your programming and that the tool being created is working well.</p>
+                            <div className={Styles.msgTContainer} >
+                                <p>It's just a sample note, click Create Notes button to create your own.</p>
                             </div>
 
                         </div>
