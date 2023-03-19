@@ -43,7 +43,8 @@
     background-color: #F7ECDC;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    /* flex-direction: column-reverse; */
+    /* justify-content: flex-end; */
     gap: 4vh;
     padding: 3vh 0;
     overflow-y: scroll;
@@ -112,6 +113,24 @@
     margin: 10vh 0 0 62.5vw;
 }
 
+#submitBtn {
+   width: 35px;
+   height: 29px;
+}
 #submitBtn:hover {
     filter: brightness(0);
+}
+
+@media (min-height:350px) and (max-height:650px) {
+
+    .navbar h4 {
+        font-size: 1.2em;
+    }
+
+    .recentMsg {
+        line-height: 130%;
+    }
+    .inputBoxContainer textarea{
+        font-size: 0.96rem;
+    }
 }

@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Styles from "../Main/Main.module.css"
 
 function Main({ activeNote }) {
 
     const [saveMessages, setSaveMessages] = useState(localStorage.getItem("messages") ? JSON.parse(localStorage.getItem("messages")) : [])
 
-    const [message, setMessage] = useState()
+    const [message, setMessage] = useState("")
 
     const date = new Date();
     const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -17,12 +17,22 @@ function Main({ activeNote }) {
         setSaveMessages((pre) => {
             return [...pre, { id: id, currentTime: currentTime, currentDate: currentDate, message: message }] // Main div message content
         })
-        
+        setMessage("")
     }
+    // Scroll End Method
+    const messageEndRef = useRef(null)
+
 
     useEffect(() => {
         localStorage.setItem("messages", JSON.stringify(saveMessages))
     }, [saveMessages])
+
+    useEffect(() => {
+        const scrollToBottom = () => {
+            messageEndRef.current?.scrollIntoView({ behavior: "smooth" })
+        }
+        scrollToBottom()
+    }, [messageEndRef, message])
 
     return (
         <div className={Styles.mainContainer}>
@@ -39,7 +49,7 @@ function Main({ activeNote }) {
 
 
                     {/* Mid Field */}
-                    <div className={Styles.recentMsgContainer}>
+                    <div className={Styles.recentMsgContainer} >
 
                         {activeNote !== undefined ?
                             saveMessages.map((msg) => {
@@ -49,7 +59,7 @@ function Main({ activeNote }) {
                                 if (msg.id === activeNotes) {
 
                                     return (
-                                        <div className={Styles.recentMsg} >
+                                        <div className={Styles.recentMsg} ref={messageEndRef}>
                                             {/* Time & Date */}
                                             < div className={Styles.msgDTContainer}>
                                                 <p>{msg.currentTime}</p>
@@ -87,17 +97,17 @@ function Main({ activeNote }) {
 
                     {/* Input Box */}
                     <div className={Styles.inputBoxContainer}>
+                        {/* Real Input Box */}
                         <textarea type="text"
                             onChange={(e) => setMessage(e.target.value)}
                             onKeyDown={(e) => {
-                                if (e.key === 'Enter') {
-                                    return messageButton()
-                                }
-
+                                if (e.key === 'Enter') { messageButton() }
                             }}
+                            value={message}
                             placeholder="Enter your text here....." name="message" />
                         <img src="/images/submit-Img.png" alt="submit-button" id={Styles.submitBtn} onClick={messageButton} />
                     </div>
+
 
                 </div>
 
