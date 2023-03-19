@@ -15,12 +15,8 @@ function Sidebar({ setcreateButtonClick, notes, activeNotes, setActiveNote }) {
 
             <div className={Styles.notesProfileContainer} >
 
-                {/* User Notes  Title Here */}
+                {/* User Notes  Profile Here */}
 
-                <div className={Styles.notesProfile} >
-                    <h5>SN</h5>
-                    <p>Sample Note</p>
-                </div>
 
                 {notes.map((note) => {
                     return (

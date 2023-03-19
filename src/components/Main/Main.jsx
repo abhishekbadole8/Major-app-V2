@@ -111,7 +111,7 @@ function Main({ activeNote }) {
 
                 </div>
 
-                // REPEAT -------
+                // At Start this div display's
                 : <div className={Styles.rightContainer}>
 
                     {/* Navbar */}
@@ -164,6 +164,7 @@ function Main({ activeNote }) {
                     </div>
 
                 </div>
+                
             }
         </div >
     )
