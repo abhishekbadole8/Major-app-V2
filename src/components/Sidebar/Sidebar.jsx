@@ -18,8 +18,7 @@ function Sidebar({ setcreateButtonClick, notes, activeNote, setActiveNote }) {
                 {/* User Notes  Profile Here */}
                 {notes.map((note, index) => {
                     return (
-                        <div key={index}
-                            className={Styles.notesProfile}
+                        <div key={index} className={Styles.notesProfile}
                             style={note.id === activeNote ? { backgroundColor: "#F7ECDC" } : { backgroundColor: "" }}
                             onClick={() => setActiveNote(note.id)}>
 

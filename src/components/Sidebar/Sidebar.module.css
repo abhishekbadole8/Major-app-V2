@@ -111,6 +111,10 @@
         font-size: 1.2em;
     }
 
+    .notesProfile p {
+        font-size: 1.15em;        
+    }
+
     .sidebarContainer h3 {
         font-size: 1.55rem;
     }

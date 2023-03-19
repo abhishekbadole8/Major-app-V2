@@ -111,9 +111,10 @@
 }
 
 #submitBtn {
-   width: 35px;
-   height: 29px;
+    width: 35px;
+    height: 29px;
 }
+
 #submitBtn:hover {
     filter: brightness(0);
 }
@@ -124,10 +125,16 @@
         font-size: 1.2em;
     }
 
+    #submitBtn {
+        width: 31px;
+        height: 26px;
+    }
+
     .recentMsg {
         line-height: 130%;
     }
-    .inputBoxContainer textarea{
+
+    .inputBoxContainer textarea {
         font-size: 0.96rem;
     }
 }

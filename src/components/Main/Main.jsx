@@ -120,18 +120,18 @@ function Main({ activeNote }) {
                     </div>
 
                     {/* Mid Field */}
-                    <div className={Styles.recentMsgContainer}>
+                    <div className={Styles.recentMsgContainer} style={{ color: "red" }}>
 
                         {/* Sample Message 1 */}
                         <div className={Styles.recentMsg} >
 
-                            <div className={Styles.msgDTContainer}>
+                            <div className={Styles.msgDTContainer} >
                                 <p>{currentTime}</p>
                                 <p>{currentDate}</p>
                             </div>
 
-                            <div className={Styles.msgTContainer}>
-                                <p>It's just a sample note, click Create Notes button to create your own.</p>
+                            <div className={Styles.msgTContainer} >
+                                <p><strong> It's just a sample note, click Create Notes button to create your own.</strong></p>
                             </div>
 
                         </div>
@@ -139,17 +139,16 @@ function Main({ activeNote }) {
                         {/* Sample Message 2 */}
                         <div className={Styles.recentMsg} >
 
-                            <div className={Styles.msgDTContainer}>
+                            <div className={Styles.msgDTContainer} >
                                 <p>{currentTime}</p>
                                 <p>{currentDate}</p>
                             </div>
 
                             <div className={Styles.msgTContainer} >
-                                <p>It's just a sample note, click Create Notes button to create your own.</p>
+                                <p><strong> It's just a sample note, click Create Notes button to create your own. </strong></p>
                             </div>
 
                         </div>
-
 
                     </div>
 
