@@ -13,15 +13,15 @@ function Main({ activeNote }) {
     const currentDate = date.getDate() + " " + month[date.getMonth()] + " " + date.getFullYear()
 
     const messageButton = () => {
-        let id = activeNote.id
-        setSaveMessages((pre) => {
-            return [...pre, { id: id, currentTime: currentTime, currentDate: currentDate, message: message }] // Main div message content
-        })
-        setMessage("")
+        if (message !== "") {
+            let id = activeNote.id
+            setSaveMessages((pre) => {
+                return [...pre, { id: id, currentTime: currentTime, currentDate: currentDate, message: message }] // Main div message content
+            })
+        }// setMessage("")
     }
     // Scroll End Method
     const messageEndRef = useRef(null)
-
 
     useEffect(() => {
         localStorage.setItem("messages", JSON.stringify(saveMessages))
@@ -37,7 +37,6 @@ function Main({ activeNote }) {
     return (
         <div className={Styles.mainContainer}>
 
-
             {(activeNote !== undefined) ?
                 <div className={Styles.rightContainer}>
 
@@ -46,7 +45,6 @@ function Main({ activeNote }) {
                         <h4 style={{ backgroundColor: activeNote.color }}>{activeNote.title.charAt(0) + activeNote.title.charAt(activeNote.title.indexOf(" ") + 1)}</h4>
                         <p>{activeNote.title}</p>
                     </div>
-
 
                     {/* Mid Field */}
                     <div className={Styles.recentMsgContainer} >
@@ -91,9 +89,7 @@ function Main({ activeNote }) {
                             </>
                         }
 
-
                     </div>
-
 
                     {/* Input Box */}
                     <div className={Styles.inputBoxContainer}>
@@ -104,10 +100,12 @@ function Main({ activeNote }) {
                                 if (e.key === 'Enter') { messageButton() }
                             }}
                             value={message}
+                            onKeyUp={(e) => {
+                                if (e.key === 'Enter') { setMessage("") }
+                            }}
                             placeholder="Enter your text here....." name="message" />
-                        <img src="/images/submit-Img.png" alt="submit-button" id={Styles.submitBtn} onClick={messageButton} />
+                        <img src="/Images/submit-Img.png" alt="submit-button" id={Styles.submitBtn} onClick={messageButton} />
                     </div>
-
 
                 </div>
 
@@ -120,7 +118,6 @@ function Main({ activeNote }) {
                         <h4>SN</h4>
                         <p>Sample Note</p>
                     </div>
-
 
                     {/* Mid Field */}
                     <div className={Styles.recentMsgContainer}>
@@ -158,13 +155,11 @@ function Main({ activeNote }) {
 
                     {/* Input Box */}
                     <div className={Styles.inputBoxContainer}>
-                        <textarea type="text"
+                        <textarea type="text" disabled={true}
                             placeholder="Enter your text here....." name="message" />
-                        <img src="/images/submit-Img.png" alt="submit-button" id={Styles.submitBtn} />
+                        <img src="/Images/submit-Img.png" alt="submit-button" id={Styles.submitBtn} />
                     </div>
-
                 </div>
-                
             }
         </div >
     )

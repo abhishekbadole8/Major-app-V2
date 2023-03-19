@@ -75,7 +75,6 @@
   display: flex;
   justify-content: space-evenly;
   list-style: none;
-
 }
 
 .colorsBox label {
@@ -84,10 +83,20 @@
   height: 5.95vh;
 }
 
+.colorsBox label:active {
+  border: 2px solid red;
+}
 
 .createNoteBtn {
   width: 100%;
   justify-content: flex-end;
+}
+
+
+.createNoteBtn button:hover {
+  font-size: 1.15em;
+  height: 4.6vh;
+  width: 8.6vw;
 }
 
 .createNoteBtn button {

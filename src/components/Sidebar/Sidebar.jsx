@@ -1,7 +1,7 @@
 import React from "react";
 import Styles from "../Sidebar/Sidebar.module.css"
 
-function Sidebar({ setcreateButtonClick, notes, activeNotes, setActiveNote }) {
+function Sidebar({ setcreateButtonClick, notes, activeNote, setActiveNote }) {
 
     return (
         <div className={Styles.sidebarContainer}>
@@ -16,21 +16,20 @@ function Sidebar({ setcreateButtonClick, notes, activeNotes, setActiveNote }) {
             <div className={Styles.notesProfileContainer} >
 
                 {/* User Notes  Profile Here */}
-
-
-                {notes.map((note) => {
+                {notes.map((note, index) => {
                     return (
-                        <div className={Styles.notesProfile}
-                            onClick={() => setActiveNote(note.id)}
-                        >
-                            <h5 style={{ backgroundColor: note.color }}>{note.title.charAt(0) + note.title.charAt(note.title.indexOf(" ") + 1)}</h5>
+                        <div key={index}
+                            className={Styles.notesProfile}
+                            style={note.id === activeNote ? { backgroundColor: "#F7ECDC" } : { backgroundColor: "" }}
+                            onClick={() => setActiveNote(note.id)}>
+
+                            <h5 style={{ backgroundColor: note.color  }}>{note.title.charAt(0) + note.title.charAt(note.title.indexOf(" ") + 1)}</h5>
                             <p>{note.title}</p>
                         </div>
                     )
                 })}
-
             </div>
-        </div>
+        </div >
     )
 }
 export default Sidebar;

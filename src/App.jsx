@@ -15,7 +15,7 @@ function App() {
 
   const [notes, setNotes] = useState(localStorage.notes ? JSON.parse(localStorage.notes) : [])
 
-  const [activeNote, setActiveNote] = useState(false) // Active Note
+  const [activeNote, setActiveNote] = useState(localStorage.activeNoteId ? JSON.parse(localStorage.activeNoteId) : false) // Active Note
 
   const [createButtonClick, setcreateButtonClick] = useState(false); // Create Button
 
@@ -34,6 +34,7 @@ function App() {
 
   // Get Active Note
   const getActiveNote = () => {
+    localStorage.setItem("activeNoteId", JSON.stringify(activeNote));
     return notes.find((note) => note.id === activeNote)
   }
 
@@ -87,9 +88,6 @@ function App() {
       ) : (
         ""
       )}
-
-
-
 
     </div>
   );

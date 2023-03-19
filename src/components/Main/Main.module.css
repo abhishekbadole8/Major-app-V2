@@ -43,8 +43,6 @@
     background-color: #F7ECDC;
     display: flex;
     flex-direction: column;
-    /* flex-direction: column-reverse; */
-    /* justify-content: flex-end; */
     gap: 4vh;
     padding: 3vh 0;
     overflow-y: scroll;
@@ -80,7 +78,6 @@
 .msgTContainer {
     font-weight: 400;
     width: 50vw;
-    /* height: ; */
 }
 
 /* Input Box */
