@@ -113,7 +113,6 @@ function Main({ activeNote }) {
                 : <div className={Styles.rightContainer}>
 
                     {/* Navbar */}
-
                     <div className={Styles.navbar}>
                         <h4>SN</h4>
                         <p>Sample Note</p>

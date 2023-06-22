@@ -1,7 +1,7 @@
 import React from "react";
 import Styles from "../Sidebar/Sidebar.module.css"
 
-function Sidebar({ setcreateButtonClick, notes, activeNote, setActiveNote }) {
+function Sidebar({ setIsModal, notes, activeNote, setActiveNote }) {
 
     return (
         <div className={Styles.sidebarContainer}>
@@ -10,7 +10,7 @@ function Sidebar({ setcreateButtonClick, notes, activeNote, setActiveNote }) {
 
             {/* Create Button */}
             <div className={Styles.btn}>
-                <label onClick={() => setcreateButtonClick(true)}>+ Create Notes</label>
+                <label onClick={() => setIsModal(true)}>+ Create Notes</label>
             </div>
 
             <div className={Styles.notesProfileContainer} >
